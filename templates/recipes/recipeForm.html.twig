@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+{% form_theme form 'bootstrap_5_layout.html.twig' %}
+
+{% block title %}Add a new recipe{% endblock %}
+
+{% block body %}
+    {{ form_start(form) }}
+<div class="container-sm my-5">
+    <h1>Add a new Recipe</h1>
+    <h3>Recipe Name</h3>
+        {{form_row(form.recipeName)}}
+    <h3>Ingredients</h3>
+    {{ form_label(form.ingredients) }}
+    {% do form.ingredients.setRendered %}
+    <ul class="ingredients d-flex flex-column"
+        style="list-style: none"
+        data-index="{{ form.ingredients|length > 0 ? form.ingredients|last.vars.name + 1 : 0 }}"
+        data-prototype="{{ form_widget(form.ingredients.vars.prototype)|e('html_attr') }}"></ul>
+    <h3>Steps</h3>
+    {{ form_label(form.descriptions) }}
+    <ol class="descriptions d-flex flex-column li"
+        data-index="{{ form.descriptions|length > 0 ? form.descriptions|last.vars.name + 1 : 0 }}"
+        data-prototype="{{ form_widget(form.descriptions.vars.prototype)|e('html_attr') }}"></ol>{% do form.descriptions.setRendered %}
+    <h3>Notes</h3>
+    {{ form_row(form.otherOptions) }}
+    {{ form_row(form.submit) }}
+</div>{{ form_end(form) }}
+{% endblock %}
+

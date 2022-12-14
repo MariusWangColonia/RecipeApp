@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+        <div class="container position-absolute" style="height: 1vh; left: 50%; top: 50%; transform: translate(-50%, 1000%)">
+                <div class="row g-0">
+                    <div class="col-lg-6 d-flex justify-content-center mb-5">
+                        <img src="https://i.pinimg.com/originals/e6/f0/7b/e6f07b7bb31a995a4bc36b757b8b4add.jpg" class="img-fluid rounded" alt="...">
+                    </div>
+                    <div class="col-lg-6 d-flex flex-column align-items-center justify-content-center">
+                            <p class="display-2 text-start"><i class="fa-solid fa-utensils me-3"></i> My Recipes</p>
+                            <p class="display-6 text-start mx-5">Add your most favorite recipes and enjoy having all your recipes in one place.</p>
+                            <p class="display-6 text-start mx-5 mb-5">Save flipping through cookbooks and have access everywhere.</p>
+                            <a class="btn btn-warning btn-lg" href="{{ asset('registration') }}">Join us!<i class="fa-solid fa-right-to-bracket ms-3"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+{% endblock %}

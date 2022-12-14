@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Recipe - {{ recipe.recipeName }}
+{% endblock %}
+
+
+{% block body %}
+    <div class="container mt-5">
+
+        <div class="card border-secondary col-xl-9 m-auto mb-5">
+            <a href="{{ asset('home') }}" class="mt-3 ms-3 text-dark text-decoration-none"><i class="fa-solid fa-arrow-left"></i> Go Back</a>
+            <div class="card-body p-5 pt-2">
+                <div class="card-header p-4 mb-3">
+                    <h2 class="card-title">{{ recipe.recipeName }}</h2>
+                    <p class="card-subtitle text-muted">{{ recipe.otherOptions }}</p>
+                </div>
+
+                <div class="d-lg-flex align-items-start justify-content-start mb-3">
+                    <img src="https://dummyimage.com/500x400/ggg/aaa" alt="" style="max-width: 100%; height: auto" class="mb-3 me-5">
+                    <div>
+                        <h4 class="ms-5">Ingredients:</h4>
+                        <ul class="list-group list-group-flush ms-5 ingredientList">
+                            {% for ingredient in recipe.ingredients %}
+                                <li class="list-group-item"><i class="fa-solid fa-xs fa-caret-right me-3"></i>{{ ingredient }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                <h3 class="mt-4">Steps:</h3>
+                <ol class="list-group list-group-numbered list-group-flush  descriptionList">
+                    {% for step in recipe.descriptions %}
+                        <li class="list-group-item list-group-horizontal">{{ step }}</li>
+                    {% endfor %}
+                </ol>
+            </div>
+        </div>
+    </div>
+{% endblock %}

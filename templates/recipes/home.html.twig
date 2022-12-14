@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Your Profile{% endblock %}
+
+{% block body %}
+    <div class="container my-5">
+        <div class="d-flex align-items-center justify-content-between m-auto">
+            <h4 class="m-0">Welcome to your account, {{ username }}.</h4>
+            <div>
+                <a class="btn btn-warning" href="{{ asset('home/new-recipe') }}"><strong>Add recipe</strong></a>
+            </div>
+        </div>
+        <hr>
+            {% if recipes|length is same as 0  %}
+                <div class="alert alert-warning c"><h3>No recipes yet!</h3></div>
+            {% else %}
+        <div class="row row-cols-1 row-cols-md-3 g-2">
+            {% for recipe in recipes %}
+                    <div class="col">
+                        <div class="card h-100" >
+                            <img src="https://dummyimage.com/200x200/fff/aaa" style="max-width: 100%; height: auto" class="card-img-top" alt="...">
+                            <hr>
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title">{{ recipe.recipeName }}</h5>
+                                <p class="card-text" style="height: 5rem">{{ recipe.otherOptions|length > 90 ? recipe.otherOptions|slice(0,90) ~ '...' : recipe.otherOptions }}</p>
+                                <a href="{{ path('app_recipedetailpage_showrecipe',{id: recipe.id}) }}"
+                                   class="btn btn-dark mt-auto">See Recipe
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

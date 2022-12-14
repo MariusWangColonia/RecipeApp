@@ -1,0 +1,26 @@
+{% extends 'base.html.twig'  %}
+{% form_theme form 'bootstrap_5_layout.html.twig' %}
+
+
+{% block body %}
+    <div class="container col-lg-6 my-5">
+        <h2>Register to our page</h2>
+        {% for notice in app.flashes('success') %}
+            <div class="alert alert-info">{{ notice }}</div>
+        {% endfor %}
+        {{ form_start(form) }}
+        <div class="mb-3">
+            {{ form_label(form.username) }}
+            {{ form_widget(form.username) }}
+            {{ form_errors(form.username) }}
+        </div>
+        {{ form_errors(form.password) }}
+        {{ form_widget(form.password) }}
+        {{ form_row(form.register) }}
+        {{ form_end(form) }}
+        <a class="btn btn-dark" href="/login">Log in to your account</a>
+
+        <input type="hidden" name="_target_path" value="/login">
+    </div>
+
+{% endblock %}
